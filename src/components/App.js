@@ -4,12 +4,14 @@ import TaskList from './TaskList';
 import './App.css';
 
 class App extends Component {
+  counter = 6;
+
   state = {
     tasks: [
       {
         id: 0,
         text: 'Play witcher 3',
-        date: '2020-03-20',
+        date: '20-03-2020',
         important: true,
         active: true,
         finishDate: null,
@@ -17,7 +19,7 @@ class App extends Component {
       {
         id: 1,
         text: 'Buy handgrenade',
-        date: '2020-04-25',
+        date: '25-04-2020',
         important: false,
         active: true,
         finishDate: null,
@@ -25,7 +27,7 @@ class App extends Component {
       {
         id: 2,
         text: 'Kill my mortal enemy',
-        date: '2021-05-10',
+        date: '10-05-2021',
         important: true,
         active: true,
         finishDate: null,
@@ -33,7 +35,7 @@ class App extends Component {
       {
         id: 3,
         text: 'Do laundry',
-        date: '2020-02-05',
+        date: '05-02-2020',
         important: false,
         active: true,
         finishDate: null,
@@ -41,7 +43,7 @@ class App extends Component {
       {
         id: 4,
         text: 'Sell car',
-        date: '2020-10-10',
+        date: '10-10-2020',
         important: true,
         active: true,
         finishDate: null,
@@ -49,7 +51,7 @@ class App extends Component {
       {
         id: 5,
         text: 'Check battery in the TV remote',
-        date: '2020-11-15',
+        date: '15-11-2020',
         important: false,
         active: true,
         finishDate: null,
@@ -59,6 +61,7 @@ class App extends Component {
 
   deleteTask = (id) => {
     // const tasks = [...this.state.tasks];
+    // const tasks = Array.from(this.state.tasks);
     // const index = tasks.findIndex(task => task.id === id);
 
     // tasks.splice(index, 1);
@@ -89,10 +92,29 @@ class App extends Component {
     })
   }
 
+  addTask = (text, date, important) => {
+    const task = {
+      id: this.counter,
+      text,
+      date,
+      important,
+      active: true,
+      finishDate: null,
+    };
+    this.counter++
+
+    this.setState(prevState => ({
+      tasks: [...prevState.tasks, task],
+    }))
+
+    return true;
+  }
+
   render() {
     return (
       <>
-        <AddTask />
+        <h1>To Do App</h1>
+        <AddTask add={this.addTask} />
         <TaskList tasks={this.state.tasks} delete={this.deleteTask} change={this.changeTaskStatus} />
       </>
     );
