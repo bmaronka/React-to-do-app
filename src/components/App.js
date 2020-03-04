@@ -30,6 +30,30 @@ class App extends Component {
         active: true,
         finishDate: null,
       },
+      {
+        id: 3,
+        text: 'Do laundry',
+        date: '2020-02-05',
+        important: false,
+        active: true,
+        finishDate: null,
+      },
+      {
+        id: 4,
+        text: 'Sell car',
+        date: '2020-10-10',
+        important: true,
+        active: true,
+        finishDate: null,
+      },
+      {
+        id: 5,
+        text: 'Check battery in the TV remote',
+        date: '2020-11-15',
+        important: false,
+        active: true,
+        finishDate: null,
+      },
     ]
   }
 
